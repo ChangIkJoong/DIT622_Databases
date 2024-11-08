@@ -90,7 +90,7 @@ CREATE TABLE RecommendedBranch(
 
 CREATE TABLE Registered(
     student CHAR(10) NOT NULL,
-    course TEXT NOT NULL,
+    course CHAR(6) NOT NULL,
 
     PRIMARY KEY (student,course),
 
