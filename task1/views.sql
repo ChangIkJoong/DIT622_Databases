@@ -58,3 +58,10 @@ FROM
 -- seminarCourses: the number of seminar courses they have read.
 -- qualified: whether or not they qualify for graduation (see domain description). 
 --The SQL type of this field should be BOOLEAN (i.e. TRUE or FALSE).
+
+-- Helper views for PathToGraduation (optional)
+--SELECT student, course, credits FROM PassedCourses ORDER BY (student, course);
+--SELECT student, course FROM UnreadMandatory ORDER BY (student, course);
+--SELECT student, course, credits FROM RecommendedCourses ORDER BY (student, course);
+
+--CREATE VIEW PathToGraduation(student, totalCredits, mandatoryLeft, mathCredits, seminarCourses, qualified) AS
