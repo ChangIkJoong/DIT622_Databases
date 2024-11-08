@@ -5,17 +5,15 @@ CREATE TABLE Students (
     program TEXT NOT NULL,
 
     PRIMARY KEY (idnr)
-)
+    )
 
 CREATE TABLE Branches (
     name TEXT NOT NULL,
     program TEXT NOT NULL,
 
     PRIMARY KEY (name, program)
-)
+    )
 
-
---INSERT INTO Courses VALUES ('CCC111','C1',22.5,'Dep1');
 CREATE TABLE Courses(
     code TEXT NOT NULL,
     name TEXT NOT NULL,
@@ -24,7 +22,7 @@ CREATE TABLE Courses(
 
     PRIMARY KEY (code)
     )
---code → Courses.code
+
 CREATE TABLE LimitedCourses(
     code TEXT NOT NULL, 
     capacity INT NOT NULL,
@@ -32,7 +30,7 @@ CREATE TABLE LimitedCourses(
     PRIMARY KEY (code),
 
     FOREIGN KEY (code) REFERENCES Courses(code)
-) 
+    ) 
 
 CREATE TABLE StudentBranches(
     student TEXT NOT NULL,
@@ -48,7 +46,7 @@ CREATE TABLE StudentBranches(
 CREATE TABLE Classifications (
     name TEXT NOT NULL,
     PRIMARY KEY (name)
-)
+    )
 
 CREATE TABLE Classified(
     course TEXT NOT NULL,
@@ -58,7 +56,7 @@ CREATE TABLE Classified(
 
     FOREIGN KEY (course) REFERENCES courses(code),
     FOREIGN KEY (classification) REFERENCES Classifications(name)
-)
+    )
 
 CREATE TABLE MandatoryProgram(
     course TEXT NOT NULL,
@@ -70,7 +68,7 @@ CREATE TABLE MandatoryProgram(
     )
 
 
-MandatoryBranch(
+CREATE TABLE MandatoryBranch(
     course TEXT NOT NULL,
     branch TEXT NOT NULL,
     program TEXT NOT NULL,
@@ -79,9 +77,7 @@ MandatoryBranch(
     FOREIGN KEY (branch, program) REFERENCES Branches(name, program)
     )
 
-
-
-RecommendedBranch(
+CREATE TABLE RecommendedBranch(
     course TEXT NOT NULL,
     branch TEXT NOT NULL,
     program TEXT NOT NULL,
@@ -90,8 +86,7 @@ RecommendedBranch(
 
     FOREIGN KEY (course) REFERENCES courses(code),
     FOREIGN KEY (branch, program) → Branches(name, program)
-
-)
+    )
 
 CREATE TABLE Registered(
     student TEXT NOT NULL,
@@ -101,9 +96,7 @@ CREATE TABLE Registered(
 
     FOREIGN KEY (student) REFERENCES Students(idnr),
     FOREIGN KEY (course) REFERENCES Courses(code)
-)
-
-
+    )
 
 CREATE TABLE Taken(
     student TEXT NOT NULL,
@@ -114,7 +107,7 @@ CREATE TABLE Taken(
 
     FOREIGN KEY (student) REFERENCES Students(idnr),
     FOREIGN KEY (course) REFERENCES Courses(code)
-)
+    )
 
 CREATE TABLE WaitingList(
     student TEXT NOT NULL,
@@ -124,4 +117,4 @@ CREATE TABLE WaitingList(
     PRIMARY KEY (student, course),
     FOREIGN KEY (student) REFERENCES Students(idnr),
     FOREIGN KEY (course) REFERENCES Courses(code)
-)
+    )
