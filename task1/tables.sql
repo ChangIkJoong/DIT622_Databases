@@ -1,5 +1,5 @@
 CREATE TABLE Students (
-    idnr INT (10) NOT NULL,
+    idnr CHAR(10) NOT NULL,
     name TEXT NOT NULL,
     login TEXT NOT NULL,
     program TEXT NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE LimitedCourses(
     ) 
 
 CREATE TABLE StudentBranches(
-    student TEXT NOT NULL,
+    student CHAR(10) NOT NULL,
     branch TEXT NOT NULL,
     program TEXT NOT NULL,
 
@@ -89,7 +89,7 @@ CREATE TABLE RecommendedBranch(
     )
 
 CREATE TABLE Registered(
-    student TEXT NOT NULL,
+    student CHAR(10) NOT NULL,
     course TEXT NOT NULL,
 
     PRIMARY KEY (student,course),
@@ -99,9 +99,9 @@ CREATE TABLE Registered(
     )
 
 CREATE TABLE Taken(
-    student TEXT NOT NULL,
+    student CHAR(10) NOT NULL,
     course TEXT NOT NULL,
-    grade TEXT NOT NULL,
+    grade CHAR(1) NOT NULL CHECK (grade IN ('U','3','4','5')),
 
     PRIMARY KEY (student,course),
 
@@ -110,7 +110,7 @@ CREATE TABLE Taken(
     )
 
 CREATE TABLE WaitingList(
-    student TEXT NOT NULL,
+    student CHAR(10) NOT NULL,
     course TEXT NOT NULL,
     position INT CHECK (position >= 0),
 
