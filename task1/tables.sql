@@ -15,7 +15,7 @@ CREATE TABLE Branches (
     )
 
 CREATE TABLE Courses(
-    code TEXT NOT NULL,
+    code CHAR(6) NOT NULL,
     name TEXT NOT NULL,
     credits FLOAT NOT NULL,
     department TEXT NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE Courses(
     )
 
 CREATE TABLE LimitedCourses(
-    code TEXT NOT NULL, 
+    code CHAR(6) NOT NULL, 
     capacity INT NOT NULL,
 
     PRIMARY KEY (code),
@@ -49,7 +49,7 @@ CREATE TABLE Classifications (
     )
 
 CREATE TABLE Classified(
-    course TEXT NOT NULL,
+    course CHAR(6) NOT NULL,
     classification TEXT NOT NULL,
 
     PRIMARY KEY (course, classification),
@@ -59,7 +59,7 @@ CREATE TABLE Classified(
     )
 
 CREATE TABLE MandatoryProgram(
-    course TEXT NOT NULL,
+    course CHAR(6) NOT NULL,
     program TEXT NOT NULL,
 
     PRIMARY KEY(course,program),
@@ -69,7 +69,7 @@ CREATE TABLE MandatoryProgram(
 
 
 CREATE TABLE MandatoryBranch(
-    course TEXT NOT NULL,
+    course CHAR(6) NOT NULL,
     branch TEXT NOT NULL,
     program TEXT NOT NULL,
     
@@ -78,7 +78,7 @@ CREATE TABLE MandatoryBranch(
     )
 
 CREATE TABLE RecommendedBranch(
-    course TEXT NOT NULL,
+    course CHAR(6) NOT NULL,
     branch TEXT NOT NULL,
     program TEXT NOT NULL,
 
@@ -100,7 +100,7 @@ CREATE TABLE Registered(
 
 CREATE TABLE Taken(
     student CHAR(10) NOT NULL,
-    course TEXT NOT NULL,
+    course CHAR(6) NOT NULL,
     grade CHAR(1) NOT NULL CHECK (grade IN ('U','3','4','5')),
 
     PRIMARY KEY (student,course),
@@ -111,8 +111,8 @@ CREATE TABLE Taken(
 
 CREATE TABLE WaitingList(
     student CHAR(10) NOT NULL,
-    course TEXT NOT NULL,
-    position INT CHECK (position >= 0),
+    course CHAR(6) NOT NULL,
+    position INT CHECK (position > 0),
 
     PRIMARY KEY (student, course),
     FOREIGN KEY (student) REFERENCES Students(idnr),
