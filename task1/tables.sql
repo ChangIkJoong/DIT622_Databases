@@ -85,7 +85,7 @@ CREATE TABLE RecommendedBranch(
     PRIMARY KEY(course,branch,program)
 
     FOREIGN KEY (course) REFERENCES courses(code),
-    FOREIGN KEY (branch, program) → Branches(name, program)
+    FOREIGN KEY (branch, program) REFERENCES Branches(name, program)
     )
 
 CREATE TABLE Registered(
