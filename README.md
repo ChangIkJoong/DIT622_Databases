@@ -11,3 +11,7 @@ psql -U postgres -d postgres -h localhost
 psql -f runsetup.sql                                        --run the setup
 ls                                                          --listing directory
 cd                                                          --change directory
+
+
+
+

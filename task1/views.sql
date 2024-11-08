@@ -2,13 +2,32 @@
 --their national identification number, name, login, their program and the branch (if any). 
 --The branch column is the only column in any of the views that is allowed to contain NULL.
 
---CREATE VIEW BasicInformation AS 
-
+CREATE VIEW BasicInformation(idnr, name, login, program, branch) AS
+SELECT
+    Students.idnr,
+    Students.name,
+    Students.login,
+    Students.program,
+    Branches.name AS branch
+FROM
+    Students
+JOIN
+    Branches ON Students.program = Branches.program;
 
 -- View: FinishedCourses(student, course, courseName, grade, credits) For all students, all finished courses, 
 --along with their course codes, names, number of credits and grades (grade 'U', '3', '4' or '5') 
 --and number of credits. The type of the grade should be a character type, e.g. CHAR(1).
 
+CREATE VIEW FinishedCourses(student, course, courseName, grade, credits) AS
+SELECT
+    Students.idnr AS student,
+    Courses.code AS course,
+    Courses.name AS courseName,
+    Taken.grade AS grade,
+    Courses.credits AS credits
+FROM
+    Students
+JOIN
 
 -- View: Registrations(student, course, status) All registered and waiting students for all courses,
 -- along with their waiting status ('registered' or 'waiting').
