@@ -2,7 +2,7 @@
 --their national identification number, name, login, their program and the branch (if any). 
 --The branch column is the only column in any of the views that is allowed to contain NULL.
 
-CREATE VIEW BasicInformation AS 
+--CREATE VIEW BasicInformation AS 
 
 
 -- View: FinishedCourses(student, course, courseName, grade, credits) For all students, all finished courses, 
